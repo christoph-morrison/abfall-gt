@@ -26,11 +26,16 @@ Eine API sollte folgende Abfragemöglichkeiten bieten:
 
 ## Meine API
 
+### Umfang
 Um meinen Bedarf an einer API zu befriedigen, habe ich als Fingerübung selbst eine geschrieben. Die Daten werden aus den iCal-Dateien bezogen (da ich die API der App zum Zeitpunkt meiner Umsetzung noch nicht kannte), mit Perl extrahiert und in einer MariaDB-Instanz gespeichert. 
 
 Die Daten werden einmal monatlich aktualisiert, immer zum Ersten des Monats.
 
-Bis dato erfüllt sie die Anforderungen 1 - 4w.ii vollständig.
+Bis dato erfüllt sie die Anforderungen 1 bis 4 vollständig.
+
+### Dokumentation der Endpunkte
+
+Folgt.
 
 ## Quellen
 ## REST-API der Abfall-App
@@ -49,7 +54,7 @@ Die REST-API der RegioIT (mit mitmproxy aus der iOS-App abgeschnorchelt) liefert
 
 #### Metadaten einer Straße 
 - [/strassen/446868](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/strassen/446868/)
-- Enthält der Namen der Straße, erneut in CAPS und abgekürzt, und den Ort. Der Zugriff auf Straßen-ID außerhalb des geographischen Bereichs der App, z.B. Stadt Gütersloh, ist nicht möglich. Es scheint aber, dass die ID bundesweit eindeutig ist, da im Kreis Gütersloh / Warendorf die ID, die in der Stadt Gütersloh vergeben sind, nicht erneut vorkommen. Das lässt 
+- Enthält der Namen der Straße, erneut in CAPS und abgekürzt, und den Ort. Der Zugriff auf Straßen-ID außerhalb des geographischen Bereichs der App, z.B. Stadt Gütersloh, ist nicht möglich. Es scheint aber, dass die ID bundesweit eindeutig ist, da im Kreis Gütersloh / Warendorf die ID, die in der Stadt Gütersloh vergeben sind, nicht erneut vorkommen. Das lässt auf eine Datenbank für alle von RegioIT unterstützte Orte schließen - wieso gibt es dort keine REST-API?
 
 #### Fraktionen (einer Straße)
 - [/fraktionen](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/fraktionen)
@@ -67,6 +72,7 @@ Die REST-API der RegioIT (mit mitmproxy aus der iOS-App abgeschnorchelt) liefert
 ### Login zur Datenpflege
 - [/login.jsf](https://gt2-abfallapp.regioit.de/abfall-app-gt2/login.jsf)
 - Bingo.
+- XSS in das Login-Formular nicht trivial möglich.
 
 ### Known unknows
 - Es muss irgendwo noch einen (oder mehrere) Endpunkt geben, der Aktuelles, Standorte von Altkleider- und Altglascontainern, Ratgeber und das Impressum zurückliefert.
