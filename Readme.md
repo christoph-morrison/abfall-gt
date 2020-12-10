@@ -59,7 +59,7 @@ Die REST-API der RegioIT (mit mitmproxy aus der iOS-App abgeschnorchelt) liefert
 #### Fraktionen (einer Straße)
 - [/fraktionen](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/fraktionen)
 - [/strassen/446868/fraktionen](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/strassen/446868/fraktionen)
-- "Fraktionen" scheinen im internen Sprachgebrauch die Müllart zu sein, die abgeholt werden. So steht die Fraktion 3 für Altpapier. Dieser Endpunkt liefert alle Fraktionen  (für eine spezifische Straße) zurück, inkl. einer Icon-ID und ein RGB-Farbcode für die Darstellung in der App.
+- "Fraktionen" scheinen im internen Sprachgebrauch die Müllart zu sein, die abgeholt werden. So steht die Fraktion 3 für Altpapier. Dieser Endpunkt liefert alle Fraktionen  (für eine spezifische Straße) zurück, inkl. einer Icon-ID und einem RGB-Farbcode für die Darstellung in der App.
 
 ### Termine einer Straße
 - [/strassen/446868/termine](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/strassen/446868/termine)
@@ -67,7 +67,7 @@ Die REST-API der RegioIT (mit mitmproxy aus der iOS-App abgeschnorchelt) liefert
 
 ### Appdata
 - [/appdata](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/appdata)
-- Liefert Meta-Informationen über den Datenbestand. Welche Uhrzeit 25:00 sein soll, hätte ich doch gerne erklärt ``(>ლ)``.
+- Liefert Meta-Informationen über den Datenbestand. Welche Uhrzeit aber 25:00 sein soll, hätte ich doch gerne erklärt ``(>ლ)``.
 
 ### Login zur Datenpflege
 - [/login.jsf](https://gt2-abfallapp.regioit.de/abfall-app-gt2/login.jsf)
