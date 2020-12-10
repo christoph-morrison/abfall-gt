@@ -37,6 +37,10 @@ Bis dato erfüllt sie die Anforderungen 1 bis 4 vollständig.
 
 Folgt.
 
+### Datenschutz
+
+Der REST-Server sowie die Datenbank loggen nichts.
+
 ## Quellen
 ## REST-API der Abfall-App
 
