@@ -4,13 +4,13 @@
 
 *Als Bewohnender der Stadt Gütersloh möchte ich die nächsten Termine zur Müllabfuhr in meiner Hausautomatisierung automatisiert abfragen können.*
 
-Die Stadt Gütersloh versucht sich ja seit länger Zeit als "Smart City" - und oft genug besteht Digitalisierung nur aus einer App oder iCal-Dateien, die die alten PDF-Dateien (aus der Digitalisierung 1.0) als elektronisches Format ersetzt haben.
+Die Stadt Gütersloh versucht sich ja seit längerer Zeit als [Smart City](https://www.digitaler-aufbruch-guetersloh.de/) - und oft genug besteht Digitalisierung nur aus einer Smart-Phone-App oder iCal-Dateien, die die alten PDF-Dateien (aus der Digitalisierung 1.0) als Format ersetzt haben.
 
 ![Das Internet ist für uns alle Neuland!](assets/neuland.gif)
 
 Ich finde beides nicht sehr befriedigend, denn beide Quellen sind wirklich nur die elektronische Repräsentation der alten Drucke. D.h. insbesondere, dass z.B. eine Anfrage wie "Gibt es diese Woche eine Abholung?" nicht ad hoc beantwortet werden kann, da beide Quellen immer **alle** verfügbaren Termine inkl. die der Vergangenheit für das laufende Jahr (und ggf. noch für das vergangene bzw. kommende Jahr) beinhalten.
 
-Es stellt sich außerdem die Frage, inwiefern es nötig ist, dass die Daten an ein privates Unternehmen anstatt von der Kommune direkt an die Bürger geliefert werden, die die Erstellung dieser Daten mit ihren Abgaben, Gebühren und Steuern finanziert haben.
+Es stellt sich außerdem die Frage, inwiefern es nötig ist, dass die Daten an ein privates Unternehmen - anstatt von der Kommune direkt an die Bürger - geliefert werden, die die Erstellung dieser Daten mit ihren Abgaben, Gebühren und Steuern finanziert haben.
 
 Eine API sollte folgende Abfragemöglichkeiten bieten:
 1. Abfrage aller unterstüzten Orte
