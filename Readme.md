@@ -56,6 +56,13 @@ Die REST-API der RegioIT (mit mitmproxy aus der iOS-App abgeschnorchelt) liefert
 - [/orte/445739/strassen](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/orte/445739/strassen)
 - Liefert eine Liste aller Straßen in Gütersloh (in CAPS und abgekürzt ``(>ლ)``) mit ihrer ID zurück, der ~~Tulpenweg~~TULPENWEG hat z.B. die ID ``446868``.
 
+#### Abholbezirke
+- [/bezirke](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/bezirke)
+- Liefert eine Liste aller Abholbezirke. Diese sind gruppiert nach
+    - `name`, Bezirks-ID, z.B. `A` oder `I`
+    - `id`, Straßen-ID, z.B. `446868`
+    - `fraktionId`, Abholtyp, z.B. `3`
+
 #### Metadaten einer Straße 
 - [/strassen/446868](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/strassen/446868/)
 - Enthält der Namen der Straße, erneut in CAPS und abgekürzt, und den Ort. Der Zugriff auf Straßen-ID außerhalb des geographischen Bereichs der App, z.B. Stadt Gütersloh, ist nicht möglich. Es scheint aber, dass die ID bundesweit eindeutig ist, da im Kreis Gütersloh / Warendorf die ID, die in der Stadt Gütersloh vergeben sind, nicht erneut vorkommen. Das lässt auf eine Datenbank für alle von RegioIT unterstützte Orte schließen - wieso gibt es dort keine REST-API?
