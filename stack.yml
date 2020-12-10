@@ -1,0 +1,41 @@
+# Use root/root as user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: mariadb
+    restart: always
+    volumes:
+      - ./.database/mariadb:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: abfall
+      MYSQL_USER: abfall
+      MYSQL_PASSWD: abfall
+    ports:
+      - 3306:3306
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  rest_server:
+    image: perl:5.26
+    restart: always
+    entrypoint: ["make", "start-server"]
+    working_dir: /opt/rest/server/abfall/gt
+    volumes:
+      - ./:/opt/rest/server/abfall/gt
+    ports:
+      - 1488:1488
+
+  vacuum:
+    image: perl:5.26
+    depends_on:
+      - db
+    restart: always
+    working_dir: /opt/rest/server/abfall/gt
+    entrypoint: ["make", "collect"]
