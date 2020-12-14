@@ -18,6 +18,8 @@ services:
 
   adminer:
     image: adminer
+    depends_on:
+      - db
     restart: always
     ports:
       - 8080:8080
@@ -25,17 +27,21 @@ services:
   rest_server:
     image: perl:5.26
     restart: always
-    entrypoint: ["make", "start-server"]
+    entrypoint: ["make", "start-rest-server"]
     working_dir: /opt/rest/server/abfall/gt
     volumes:
       - ./:/opt/rest/server/abfall/gt
+    depends_on:
+      - db
     ports:
-      - 1488:1488
+      - 14880:14880
 
   vacuum:
     image: perl:5.26
     depends_on:
       - db
     restart: always
+    volumes:
+      - ./:/opt/rest/server/abfall/gt
     working_dir: /opt/rest/server/abfall/gt
     entrypoint: ["make", "collect"]
