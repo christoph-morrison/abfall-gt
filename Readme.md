@@ -110,7 +110,7 @@ Die REST-API der RegioIT (mit mitmproxy aus der iOS-App abgeschnorchelt) liefert
 
 ##### Straße abfragen
 - [/orte/Gütersloh/strassen?q=TULPENWEG](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/orte/G%C3%BCtersloh/strassen?q=TULPENWEG)
-- Fragt den Ort nach einer Straße ab. Groß- und Kleinschreibung wird nicht [beachtet]!(https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/orte/G%C3%BCtersloh/strassen?q=tUlPEnWEG)
+- Fragt den Ort nach einer Straße ab. Groß- und Kleinschreibung wird nicht [beachtet](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/orte/G%C3%BCtersloh/strassen?q=tUlPEnWEG)!
 
 ##### Abholbezirke
 - [/bezirke](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/bezirke)
