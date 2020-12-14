@@ -39,7 +39,7 @@ get_calendar_data();
 
 #
 ###################################################################### Functions
-sub translate_summmary_2_id {
+sub translate_summary_2_collection_id {
     my $summary     = shift // return q{unknown};
     my $re_index    = undef;
     my $collection_id = undef;
@@ -227,7 +227,7 @@ sub _parse_ical_data {
                     for my $uuid (sort keys %{$event->{$year}->{$month}->{$day}} ) {
                         my $event_details = $event->{$year}->{$month}->{$day}->{$uuid};
 
-                        my $translated_collection_id = translate_summmary_2_id($event_details->{SUMMARY});
+                        my $translated_collection_id = translate_summary_2_collection_id($event_details->{SUMMARY});
 
                         if (!$translated_collection_id) {
                             say qq($event_details->{SUMMARY} can't be translated ($uuid));
