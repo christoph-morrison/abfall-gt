@@ -189,6 +189,11 @@ sub _fix_street_name {
     # lowercase Dem/Den/Der, Ab, Ohne, Nur, Bis, Grossen
     $street_name =~ s/\b(De[mnr]|Ab|Ohne|Nur|Bis|Grossen)\b/lc $1/eg;
 
+    # fix Von-Recklinghausen-Straße
+    if ($street_name = q{Von Recklinghausen Straße}) {
+        $street_name = q{Von-Recklinghausen-Straße}
+    }
+
     return $street_name;
 }
 
