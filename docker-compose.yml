@@ -3,6 +3,7 @@ version: '3.1'
 
 services:
   db:
+    container_name: abfall_gt_db
     image: mariadb
     restart: always
     volumes:
@@ -27,18 +28,18 @@ services:
     container_name: abfall_gt_rest_server
     build:
       context: ./
-      dockerfile: docker/collect/Dockerfile
+      dockerfile: docker/server/Dockerfile
       args:
         buildno: 1
     restart: always
-    entrypoint: ["apid", "-c", "config/abfall.apid.conf", "start"]
+    entrypoint: ["apid", "-c", "config/abfall.apid.conf", "debug"]
     working_dir: /opt/rest/server/abfall/gt
     volumes:
       - ./:/opt/rest/server/abfall/gt
     depends_on:
       - db
     ports:
-      - 14880:14880
+      - 8081:80
 
   collect:
     container_name: abfall_gt_vacuum
@@ -49,7 +50,6 @@ services:
         buildno: 1
     depends_on:
       - db
-    restart: always
     volumes:
       - ./:/opt/rest/server/abfall/gt
     working_dir: /opt/rest/server/abfall/gt
