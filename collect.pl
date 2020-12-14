@@ -8,24 +8,28 @@ use utf8;
 use 5.026;
 
 #
+###################################################################### Built-in libraries
+use Carp;
+use Encode qw( decode_utf8 encode_utf8 );
+
+#
 ###################################################################### Libraries
-use iCal::Parser;
 use Readonly;
 use HTTP::Tiny;
 use Data::Dumper;
-use Encode qw( decode_utf8 encode_utf8 );
 use URL::Encode;
 use DBI;
 use DBD::MariaDB;
 use iCal::Parser;
 use Config::IniFiles;
-use Carp;
+
 
 Readonly my $base_uri           => q();
 Readonly my $id_street_re       => qr{ <option\svalue="(?<id>[^"]+)[^>]*>(?<street>[^<]+)<\/option> }xs;
 Readonly my $year_re            => qr{ <option\s>(?<year>20\d{2})</option> }xs;
 Readonly my $env                => q{development};
 Readonly my $skip_ical_fetch    => 1;
+Readonly my $verbose            => 1;
 
 my ($db_handle, $html, %streets, @available_years, $config, $db_config);
 
@@ -69,7 +73,7 @@ sub get_street_listing {
         $html = $response->{content};
     }
 
-    croak qq{Request to $base_uri failed} unless $response->{success};
+    croak qq{Request to $base_uri failed: $response->{content} ($response->{reason})} unless $response->{success};
 }
 
 sub get_available_streets {
@@ -111,7 +115,7 @@ sub get_calendar_data {
         _insert_street($street_id, $streets{$street_id});
         for my $year (@available_years) {
             my  $outfile = qq{$temp_dir/$street_id-$year.ics};
-            _fetch_ical_file($street_id, $year, $outfile, [0..5]) if (!$skip_ical_fetch);
+            _fetch_ical_file($street_id, $year, $outfile, [0..5]) if (not defined $skip_ical_fetch);
             if (! -s $outfile) {
                 say STDERR qq{$outfile does not exist for $street_id};
                 next;
@@ -185,6 +189,11 @@ sub _fix_street_name {
 
 sub _insert_street {
     my ($street_id, $street_name) = @_;
+
+    $verbose && say Data::Dumper->Dump(
+        [ $street_id, $street_name ],
+        [qw( street_id street_name )]
+    );
 
     $db_handle->do(
         q{REPLACE INTO `streets` VALUES(?, ?)},
