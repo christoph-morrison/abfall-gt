@@ -83,7 +83,7 @@ Die REST-API der RegioIT (mit mitmproxy aus der iOS-App abgeschnorchelt) liefert
 - Preisinformationen als HTML-Text, unstrukturiert
 
 ##### Entsorgungs-Glossar
-- [/rest/stoffe](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/stoffe)
+- [/stoffe](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/stoffe)
 - Glossar über Abfallstoffe, Informationen zum Entsorgungsort und zur -art. 
 
 #### Stationäre Sammlung
@@ -92,7 +92,7 @@ Die REST-API der RegioIT (mit mitmproxy aus der iOS-App abgeschnorchelt) liefert
 - Enthält Informationen über die verschiedenen Standortarten
 
 ##### Standorte
-- [/rest/standorte](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/standorte)
+- [/standorte](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/standorte)
 - Liste aller stationären Entsorgungsmöglichkeiten, z.B. Altkleider- oder Papiercontainer, inkl. Geo-Koordinaten.
 
 ##### Öffnungszeiten der mobilen Standorte
