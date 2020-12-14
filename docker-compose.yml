@@ -23,7 +23,7 @@ services:
     ports:
       - 8080:8080
 
-  rest_server:
+  rest-server:
     container_name: abfall_gt_rest_server
     build:
       context: ./
@@ -31,7 +31,7 @@ services:
       args:
         buildno: 1
     restart: always
-    entrypoint: ["make", "start-rest-server"]
+    entrypoint: ["apid", "-c", "config/abfall.apid.conf", "start"]
     working_dir: /opt/rest/server/abfall/gt
     volumes:
       - ./:/opt/rest/server/abfall/gt
@@ -40,7 +40,7 @@ services:
     ports:
       - 14880:14880
 
-  vacuum:
+  collect:
     container_name: abfall_gt_vacuum
     build:
       context: ./
@@ -53,4 +53,4 @@ services:
     volumes:
       - ./:/opt/rest/server/abfall/gt
     working_dir: /opt/rest/server/abfall/gt
-    entrypoint: ["make", "collect"]
+    entrypoint: ["perl", "collect.pl"]

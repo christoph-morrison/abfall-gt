@@ -4,12 +4,12 @@ now := $(shell date '+%Y%m%d_%H%M%S')
 
 all:
 	@echo "make [target]"
-	@echo "  collect       Vacuum the data from the online calendar"
-	@echo "  clean         Reset everything: empty database, save downloaded ics files"
-	@echo "  test          Prove sources"
+	@echo "  collect        Vacuum the data from the online calendar"
+	@echo "  rest-server    Start the REST server"
+	@echo "  clean          Reset everything: empty database, save downloaded ics files"
 
 start-rest-server:
-	sudo apid -c config/abfall.apid.conf start
+	docker-compose up rest-server
 
 start-rest-server-debug:
 	sudo apid -c config/abfall.apid.conf -f start
@@ -21,7 +21,7 @@ reload-rest-server:
 	sudo apid -c config/abfall.apid.conf reload
 
 collect:
-	perl collect.pl
+	docker-compose up collect
 
 test:
 

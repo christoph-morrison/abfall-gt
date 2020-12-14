@@ -41,6 +41,18 @@ Folgt.
 
 Der REST-Server sowie die Datenbank loggen nichts.
 
+### Benutzung
+
+Bevor die Daten über den REST-Server ausgeliefert werden, muss die Datenbank erst aufgebaut werden. Dazu wird eine einsatzfähige Docker-Installation und `make` benötigt.
+
+    make collect
+    
+Startet eine Docker-Instanz von Perl (und die Datenbank-Instanz, die für die Speicherung der Daten benötigt wird) und den Importprozess. Dies dauert.
+
+    make rest-server
+    
+Startet eine Docker-Instanz mit dem REST-Server und ebenfalls, falls noch nicht geschehen, die Datenbank-Instanz.
+
 ## Quellen
 ## REST-API der Abfall-App
 
