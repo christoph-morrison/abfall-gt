@@ -97,7 +97,7 @@ get q{/version} => sub {
 
 get q{/cities} => sub {
     my $cities = $db_handle->selectall_arrayref(
-        "SELECT id, city FROM cities ORDER BY id",
+        "SELECT id, name FROM cities ORDER BY id",
         { Slice => {} }
     );
 
@@ -127,7 +127,7 @@ get q{/city/by/id} => sub {
 
     if (defined $city_id) {
         my $cities = $db_handle->selectrow_hashref(
-            "SELECT id AS 'id', city AS 'city' FROM cities WHERE id = '$city_id' ORDER BY id",
+            "SELECT id AS 'id', 'name' AS 'name' FROM cities WHERE id = '$city_id' ORDER BY id",
             { Slice => {} }
         );
 

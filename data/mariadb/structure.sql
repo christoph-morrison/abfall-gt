@@ -11,15 +11,18 @@ CREATE TABLE `appointments` (
     `datetime` datetime NOT NULL,
     `street_id` int(10) unsigned NOT NULL,
     `collection_id` tinyint(3) unsigned NOT NULL,
-    PRIMARY KEY (`datetime`,`street_id`,`collection_id`)
+    PRIMARY KEY (`datetime`,`street_id`,`collection_id`)«
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
 
 DROP TABLE IF EXISTS `cities`;
 CREATE TABLE `cities` (
     `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-    `city` varchar(255) COLLATE utf8mb4_german2_ci NOT NULL,
+    `name` varchar(255) COLLATE utf8mb4_german2_ci NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
+
+REPLACE INTO `cities` (`id`, `name`) VALUES
+(445739, 'Gütersloh');
 
 DROP TABLE IF EXISTS `collections`;
 CREATE TABLE `collections` (
@@ -28,7 +31,7 @@ CREATE TABLE `collections` (
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
 
-INSERT INTO `collections` (`id`, `name`) VALUES
+REPLACE INTO `collections` (`id`, `name`) VALUES
 (1,	'Restmüll 14-tgl.'),
 (2,	'Restmüll 4-wö.'),
 (3,	'Kompost'),
