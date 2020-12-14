@@ -79,7 +79,7 @@ Die REST-API der RegioIT (mit mitmproxy aus der iOS-App abgeschnorchelt) liefert
 - Aktuelle Meldungen
 
 ##### Preise
-- [/texte/ort/G%C3%BCtersloh/preise](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/texte/ort/G%C3%BCtersloh/preise)
+- [/texte/ort/Gütersloh/preise](https://gt2-abfallapp.regioit.de/abfall-app-gt2/rest/texte/ort/G%C3%BCtersloh/preise)
 - Preisinformationen als HTML-Text, unstrukturiert
 
 ##### Entsorgungs-Glossar
