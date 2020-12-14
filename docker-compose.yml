@@ -17,6 +17,7 @@ services:
       - 3306:3306
 
   adminer:
+    container_name: abfall_gt_adminer
     image: adminer
     depends_on:
       - db
