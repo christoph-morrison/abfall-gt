@@ -111,6 +111,11 @@ sub get_calendar_data {
 
     my $temp_dir = $config->val($env, q{temp_dir});
 
+    if (! -e $temp_dir) {
+        mkdir $temp_dir ||
+            croak $!;
+    }
+
     for my $street_id (sort keys %streets) {
         _insert_street($street_id, $streets{$street_id});
         for my $year (@available_years) {
