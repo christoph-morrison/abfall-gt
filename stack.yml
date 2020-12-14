@@ -2,7 +2,6 @@
 version: '3.1'
 
 services:
-
   db:
     image: mariadb
     restart: always
@@ -25,7 +24,12 @@ services:
       - 8080:8080
 
   rest_server:
-    image: perl:5.26
+    container_name: abfall_gt_rest_server
+    build:
+      context: ./
+      dockerfile: docker/collect/Dockerfile
+      args:
+        buildno: 1
     restart: always
     entrypoint: ["make", "start-rest-server"]
     working_dir: /opt/rest/server/abfall/gt
@@ -37,7 +41,12 @@ services:
       - 14880:14880
 
   vacuum:
-    image: perl:5.26
+    container_name: abfall_gt_vacuum
+    build:
+      context: ./
+      dockerfile: docker/collect/Dockerfile
+      args:
+        buildno: 1
     depends_on:
       - db
     restart: always
