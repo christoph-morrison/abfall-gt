@@ -104,10 +104,7 @@ sub get_calendar_data {
 
     my $temp_dir = $config->val($env, q{temp_dir});
 
-    if (! -e $temp_dir) {
-        mkdir $temp_dir ||
-            croak $!;
-    }
+    mkdir $temp_dir || croak $! if (! -e $temp_dir);
 
     for my $street_id (sort keys %streets) {
 
