@@ -85,7 +85,15 @@ sub get_available_streets {
 }
 
 sub get_available_years {
-    push @available_years, (((localtime)[5]) + 1900);
+    if (!$html) {
+        get_street_listing();
+    }
+
+    while ( $html =~ /$year_re/g ) {
+        push @available_years, $+{year};
+    }
+
+    push @available_years, (((localtime)[5]) + 1900) if (scalar @available_years == 0);
 }
 
 sub get_calendar_data {
