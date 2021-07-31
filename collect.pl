@@ -274,15 +274,15 @@ sub _parse_ical_data {
 sub _fetch_ical_file {
     my ($street_id, $year, $outfile, $collection_ids) = @_;
 
-    my  $url     =
-        sprintf q(%s/downloadfile.jsp;jsessionid=123foobar--jK.srv31452?format=%s&strasse=%d&ort=%s&jahr=%d&%s),
-            $base_uri,                                                  # basis adresse
-            q(ics),                                                     # format
-            $street_id,                                                 # strasse
-            URL::Encode::url_encode_utf8(q(Gütersloh)),                 # ort
-            $year,                                                      # jahr
-            join q(&), map { qq{fraktion=$_} } @{$collection_ids}       # fraktionen
-        ;
+    my  $url = sprintf(
+        q(%s/downloadfile.jsp;jsessionid=123foobar--jK.srv31452?format=%s&strasse=%d&ort=%s&jahr=%d&%s),
+        $config->val($env, q{base_uri}),                            # base uri
+        q(ics),                                                     # format
+        $street_id,                                                 # strasse
+        URL::Encode::url_encode_utf8(q(Gütersloh)),                 # ort
+        $year,                                                      # jahr
+        join q(&), map { qq{fraktion=$_} } @{$collection_ids}       # fraktionen
+    );
 
     my $http_ics_request = HTTP::Tiny->new;
     $http_ics_request->mirror($url, $outfile);
