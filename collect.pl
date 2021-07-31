@@ -24,7 +24,6 @@ use iCal::Parser;
 use Config::IniFiles;
 
 
-Readonly my $base_uri           => q();
 Readonly my $id_street_re       => qr{ <option\svalue="(?<id>[^"]+)[^>]*>(?<street>[^<]+)<\/option> }xs;
 Readonly my $year_re            => qr{ <option\s>(?<year>20\d{2})</option> }xs;
 Readonly my $env                => q{development};
