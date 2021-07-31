@@ -119,12 +119,14 @@ sub get_calendar_data {
 
         for my $year (@available_years) {
             my  $outfile = qq{$temp_dir/$street_id-$year.ics};
-            _fetch_ical_file($street_id, $year, $outfile, [0..5]) if (not defined $skip_ical_fetch);
+
             _fetch_ical_file($street_id, $year, $outfile, [0..5]) if (! $config->val($env, q{skip-ical-fetch}) );
+
             if (! -s $outfile) {
                 say STDERR qq{$outfile does not exist for $street_id};
                 next;
             }
+
             _parse_ical_data($outfile, $street_id)
         }
     }
