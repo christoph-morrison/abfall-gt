@@ -47,8 +47,12 @@ DROP TABLE IF EXISTS `streets`;
 CREATE TABLE `streets` (
     `id` int(10) unsigned NOT NULL,
     `name` varchar(255) COLLATE utf8mb4_german2_ci NOT NULL,
-    PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
+    `cities_id` int(10) unsigned NOT NULL,
+    PRIMARY KEY (`id`),
+    KEY `cities_id` (`cities_id`),
+    CONSTRAINT `streets_ibfk_1` FOREIGN KEY (`cities_id`) REFERENCES `cities` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci
+
 
 
 -- 2020-12-14 12:49:59

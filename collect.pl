@@ -111,7 +111,9 @@ sub get_calendar_data {
     }
 
     for my $street_id (sort keys %streets) {
-        _insert_street($street_id, $streets{$street_id});
+
+        _insert_street($street_id, $streets{$street_id}, $config->val($env, q{city-id}));
+
         for my $year (@available_years) {
             my  $outfile = qq{$temp_dir/$street_id-$year.ics};
             _fetch_ical_file($street_id, $year, $outfile, [0..5]) if (not defined $skip_ical_fetch);
@@ -192,7 +194,7 @@ sub _fix_street_name {
 }
 
 sub _insert_street {
-    my ($street_id, $street_name) = @_;
+    my ($street_id, $street_name, $city_id) = @_;
 
     $verbose && say Data::Dumper->Dump(
         [ $street_id, $street_name ],
@@ -200,10 +202,11 @@ sub _insert_street {
     );
 
     $db_handle->do(
-        q{REPLACE INTO `streets` VALUES(?, ?)},
+        q{REPLACE INTO `streets` VALUES(?, ?, ?)},
         undef,
         $street_id,
         $street_name,
+        $city_id,
     );
 
     if ($db_handle->err()) {
