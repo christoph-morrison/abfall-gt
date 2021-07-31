@@ -28,7 +28,6 @@ Readonly my $base_uri           => q();
 Readonly my $id_street_re       => qr{ <option\svalue="(?<id>[^"]+)[^>]*>(?<street>[^<]+)<\/option> }xs;
 Readonly my $year_re            => qr{ <option\s>(?<year>20\d{2})</option> }xs;
 Readonly my $env                => q{development};
-Readonly my $skip_ical_fetch    => 1;
 Readonly my $verbose            => 1;
 
 my ($db_handle, $html, %streets, @available_years, $config, $db_config);
@@ -117,6 +116,7 @@ sub get_calendar_data {
         for my $year (@available_years) {
             my  $outfile = qq{$temp_dir/$street_id-$year.ics};
             _fetch_ical_file($street_id, $year, $outfile, [0..5]) if (not defined $skip_ical_fetch);
+            _fetch_ical_file($street_id, $year, $outfile, [0..5]) if (! $config->val($env, q{skip-ical-fetch}) );
             if (! -s $outfile) {
                 say STDERR qq{$outfile does not exist for $street_id};
                 next;
