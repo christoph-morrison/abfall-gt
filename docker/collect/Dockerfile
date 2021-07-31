@@ -1,4 +1,4 @@
-FROM perl:5.26
+FROM perl:latest
 RUN cpanm -n \
     Readonly \
     HTTP::Tiny \
