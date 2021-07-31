@@ -43,7 +43,7 @@ services:
       - 8081:80
 
   collect:
-    container_name: abfall_gt_vacuum
+    container_name: abfall_gt_collector
     build:
       context: ./
       dockerfile: docker/collect/Dockerfile
