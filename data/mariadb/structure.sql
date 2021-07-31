@@ -11,7 +11,7 @@ CREATE TABLE `appointments` (
     `datetime` datetime NOT NULL,
     `street_id` int(10) unsigned NOT NULL,
     `collection_id` tinyint(3) unsigned NOT NULL,
-    PRIMARY KEY (`datetime`,`street_id`,`collection_id`)«
+    PRIMARY KEY (`datetime`,`street_id`,`collection_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_german2_ci;
 
 DROP TABLE IF EXISTS `cities`;
